@@ -29,7 +29,7 @@ def testlogic():
         mqtt.Client.connected_flag = False
         seed(1)
         print("Process Started....")
-        client = mqtt.Client("Jaded")
+        client = mqtt.Client()
         client.on_connect = on_connect
         client.loop_start()
         print("Connecting to broker ",mqtturl)  
