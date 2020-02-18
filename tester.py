@@ -15,6 +15,7 @@ val5 = "fuellstoff3"
 arrd = [val1,val2,val3,val4,val5]
 mqtturl = os.getenv("MQTT_URL")
 mqttport = int(os.getenv("MQTT_PORT"))
+instance_name = os.getenv("INSTANCE_NAME")
 
 def on_connect(client, userdata, flags, rc):
     if rc==0:
@@ -29,7 +30,7 @@ def testlogic():
         mqtt.Client.connected_flag = False
         seed(1)
         print("Process Started....")
-        client = mqtt.Client()
+        client = mqtt.Client(instance_name)
         client.on_connect = on_connect
         client.loop_start()
         print("Connecting to broker ",mqtturl)  
