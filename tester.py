@@ -44,7 +44,6 @@ def testlogic():
                     for _ in range(1):
                         value = randint(0,10)
                         client.publish("sensor", json.dumps({"sensor": v+"Box", "value":float(value)}))
-                client.disconnect()
             except:
                 print("Exception in publish")
     except:
