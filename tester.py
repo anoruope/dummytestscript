@@ -33,7 +33,7 @@ def testlogic():
         client = mqtt.Client(instance_name)
         client.on_connect = on_connect
         client.loop_start()
-        print("Connecting to broker ",mqtturl)  
+        print("Connecting to broker ",mqtturl)
         client.connect(mqtturl,mqttport,300)
         while not client.connected_flag:
             print("In wait loop")
@@ -43,7 +43,7 @@ def testlogic():
                 for v in arrd:
                     for _ in range(1):
                         value = randint(0,10)
-                        client.publish("sensor", json.dumps({"sensor": v+"Box", "value":float(value)}))
+                        client.publish("sensor", json.dumps({"sensor": v+"Box", "value":float(value)}))M
             except:
                 print("Exception in publish")
     except:
