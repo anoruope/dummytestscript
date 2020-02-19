@@ -17,33 +17,18 @@ mqtturl = os.getenv("MQTT_URL")
 mqttport = int(os.getenv("MQTT_PORT"))
 instance_name = os.getenv("INSTANCE_NAME")
 
-def on_connect(client, userdata, flags, rc):
-    if rc==0:
-        client.connected_flag = True
-        print("connected Returned code =",rc)
-    else:
-        client.connected_flag = False
-        print("Bad connection Returned code=",rc)
-
 def testlogic():
     try:
-        mqtt.Client.connected_flag = False
         seed(1)
-        print("Process Started....")
         client = mqtt.Client(instance_name)
-        client.on_connect = on_connect
+        client.connect(mqtturl,mqttport,10)
         client.loop_start()
-        print("Connecting to broker ",mqtturl)
-        client.connect(mqtturl,mqttport,5)
-        while not client.connected_flag:
-            print("In wait loop")
-            time.sleep(4)
+        
         while True:
             try:
                 for v in arrd:
-                    for _ in range(1):
-                        value = randint(0,10)
-                        client.publish("sensor", json.dumps({"sensor": v+"Box", "value":float(value)}))
+                    value = randint(0,10)
+                    client.publish("sensor", json.dumps({"sensor": v+"Box", "value":float(value)}))
             except:
                 print("Exception in publish")
     except:
