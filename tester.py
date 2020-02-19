@@ -34,7 +34,7 @@ def testlogic():
         client.on_connect = on_connect
         client.loop_start()
         print("Connecting to broker ",mqtturl)
-        client.connect(mqtturl,mqttport,15)
+        client.connect(mqtturl,mqttport,5)
         while not client.connected_flag:
             print("In wait loop")
             time.sleep(4)
@@ -42,13 +42,13 @@ def testlogic():
             try:
                 for v in arrd:
                     for _ in range(1):
-                        value = randint(0,5)
+                        value = randint(0,10)
                         client.publish("sensor", json.dumps({"sensor": v+"Box", "value":float(value)}))
             except:
                 print("Exception in publish")
     except:
         print("Exception in connection")
-
+        
 
 
 testlogic()
