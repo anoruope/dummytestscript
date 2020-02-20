@@ -21,6 +21,7 @@ def testlogic():
     try:
         seed(1)
         client = mqtt.Client(instance_name)
+        client.username_pw_set("swsfile","swsflorian")
         client.connect(mqtturl,mqttport,10)
         client.loop_start()
         
