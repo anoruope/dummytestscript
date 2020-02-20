@@ -22,7 +22,7 @@ def testlogic():
         seed(1)
         client = mqtt.Client(instance_name)
         client.username_pw_set("swsfile","swsflorian")
-        client.connect(mqtturl,mqttport,10)
+        client.connect(mqtturl,mqttport,5)
         client.loop_start()
         
         while True:
