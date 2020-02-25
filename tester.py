@@ -36,6 +36,7 @@ def testlogic():
                 jade = recall[0] + recall[1] + recall[2] + recall[3] + recall[4]
                 average = jade/len(recall)
                 print(recall[0], recall[1], recall[2],recall[3],recall[4])
+                time.sleep(1)
                 client.publish("sensor", json.dumps({"Harz":float(recall[0]),"Haerter":float(recall[1]),"fuellstoff1":float(recall[2]),"fuellstoff2":float(recall[3]),"fuellstoff3":float(recall[4]), "value":float(average)}))
                 recall.clear()
             except:
